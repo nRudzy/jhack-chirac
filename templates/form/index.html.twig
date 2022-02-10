@@ -3,5 +3,85 @@
 {% block title %}LVConnect{% endblock %}
 
 {% block body %}
-    {{ form(form) }}
+    <div class="jss1">
+        <div class="jss2">
+            <header class="jss20 jss26 jss11 jss12 jss18 mui-fixed jss5 ">
+                <div class="jss47 jss49 jss48">
+                    <h6 class="jss51 jss68 jss80 jss7">LVConnect</h6>
+                </div>
+            </header>
+            <div class="jss3">
+                <div class="jss4">
+                    {{ form_start(form, {'attr': {'class': 'jss118'}}) }}
+                    <div class="my-custom-class-for-errors">
+                        {{ form_errors(form) }}
+                    </div>
+                    <img src="{{ asset('img/logo-lv.svg') }}" alt="Logo LinkValue" class="jss120">
+                    <div class="jss20 jss23 jss21 jss121">
+                        <div class="jss122">
+                            <h2 class="jss51 jss67 jss78">Connexion</h2>
+                            <div class="jss123 jss124 jss126">
+                                <label class="jss138 jss143 jss131 jss127 jss132 jss135 jss137 jss139 jss128 jss134" data-shrink="false">Email<span class="jss144"> *</span></label>
+                                <div class="jss158 jss145 jss167 jss159 jss160 jss146">
+                                    <fieldset aria-hidden="true" style="padding-left: 30.375px;" class="jss175 jss152">
+                                        <legend class="jss176" style="width: 0.01px;"><span>​</span></legend>
+                                    </fieldset>
+                                    {{ form_widget(form.email, {'attr': {'class': 'jss168 jss153 jss171', 'id': 'form_email'}}) }}
+                                </div>
+                            </div>
+                            <div class="jss123 jss124 jss126">
+                                <label class="jss138 jss143 jss131 jss127 jss132 jss135 jss137" data-shrink="false">Mot de passe<span class="jss144"> *</span></label>
+                                <div class="jss158 jss145 jss167 jss159">
+                                    <fieldset aria-hidden="true" style="padding-left: 51.375px;" class="jss175 jss152">
+                                        <legend class="jss176" style="width: 0.01px;"><span>​</span></legend>
+                                    </fieldset>
+                                    {{ form_widget(form.password, {'attr' :{'class': 'jss168 jss153 jss171'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="jss177">
+                            {{ form_row(form.submit, {'label': 'Se connecter', 'attr': {'class': 'jss206 jss180 jss182 jss183 jss185 jss186 jss179'}}) }}
+                            <a class="jss206 jss180 jss182 jss185 jss179" tabindex="0" role="button" href="https://lvconnect.link-value.fr/forgot-password"><span class="jss181">Mot de passe oublié</span><span class="jss209"></span></a>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        window.onload = function () {
+            document.getElementById('form_email').value = '';
+            document.getElementById('form_email').focus();
+            document.getElementById('form_email').parentNode.firstElementChild.firstElementChild.style.width = '44.75px';
+            document.getElementById('form_email').parentNode.firstElementChild.style.paddingLeft = '8px';
+            var inputs = document.querySelectorAll('input');
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('focusin', function (e) {
+                    e.currentTarget.parentNode.classList.add('jss160', 'jss146');
+                    e.currentTarget.parentNode.firstElementChild.style.paddingLeft = '8px';
+                    if (e.currentTarget.type === 'password') {
+                        e.currentTarget.parentNode.firstElementChild.firstElementChild.style.width = '87.5px';
+                    }
+                    else {
+                        e.currentTarget.parentNode.firstElementChild.firstElementChild.style.width = '44.75px';
+                    }
+
+                    e.currentTarget.parentNode.parentNode.firstElementChild.classList.add('jss139', 'jss128', 'jss134');
+                })
+                inputs[i].addEventListener('focusout', function (e) {
+                    e.currentTarget.parentNode.classList.remove('jss160', 'jss146');
+                    if (e.currentTarget.value === '') {
+                        e.currentTarget.parentNode.firstElementChild.style.paddingLeft = '30.375px';
+                        e.currentTarget.parentNode.firstElementChild.firstElementChild.style.width = '0.01px';
+                        e.currentTarget.parentNode.parentNode.firstElementChild.classList.remove('jss139', 'jss128', 'jss134');
+                    }
+                    e.currentTarget.parentNode.parentNode.firstElementChild.classList.remove('jss139');
+                })
+            }
+        }
+    </script>
 {% endblock %}

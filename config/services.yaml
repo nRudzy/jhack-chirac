@@ -20,5 +20,11 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\Controller\FormController:
+        bind:
+            $keyT: '%env(SLACK_KEY_T)%'
+            $keyB: '%env(SLACK_KEY_B)%'
+            $token: '%env(SLACK_TOKEN)%'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

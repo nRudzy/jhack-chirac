@@ -5,8 +5,10 @@
         <title>{% block title %}Arborescence{% endblock %}</title>
         <link rel="icon" type="image/png" href="{{ asset('img/arborescence.png') }}">
 
-        {% block stylesheets %}{% endblock %}
-
+        {% block stylesheets %}
+            <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
+        {% endblock %}
+        
         {% block javascripts %}{% endblock %}
     </head>
     <body>

@@ -22,7 +22,6 @@ class FormValidator extends ConstraintValidator
             throw new UnexpectedValueException($value, 'string');
         }
 
-        dump($value);
         if (!strpos($value, self::LV_DOMAIN)) {
             $this->context->buildViolation($constraint->notLinkValue)
                 ->addViolation();

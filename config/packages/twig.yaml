@@ -1,5 +1,11 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    globals:
+        sender_name: '%env(APP_SENDER_NAME)%'
+        sender_email: '%env(APP_SENDER_EMAIL)%'
+        sender_telephone: '%env(APP_SENDER_TELEPHONE)%'
+        solicited_by: '%env(APP_SOLICITED_BY)%'
+        phishing_link: '%env(APP_PHISHING_LINK)%'
 
 when@test:
     twig:

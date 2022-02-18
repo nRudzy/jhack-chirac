@@ -1392,3 +1392,42 @@ label[data-shrink=false] + .jss159 .jss168:focus::-ms-input-placeholder {
 input.jss153 {
     padding: 18.5px 13px;
 }
+
+#main-content-jhack {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(rgba(101, 101, 121, 0.5), rgba(101, 101, 121, 0.5)),
+    url("../img/jhack-bg.png");
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#main-content-jhack img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 25%;
+    margin: auto;
+}
+
+#main-content-jhack .content {
+    width: 50%;
+    text-align: center;
+}
+
+#main-content-jhack .content .text-jhack #text-content-jhack {
+    font-size: 30px;
+    text-align: justify;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+#main-content-jhack #title-jhack {
+    font-size: 60px;
+    font-weight: bold;
+}

@@ -3,8 +3,22 @@
 {% block title %}Hello Jhack !{% endblock %}
 
 {% block body %}
-    <link rel="icon" type="image/png" href="{{ asset('img/jhack_chirac.png') }}">
+    <div id="main-content-jhack">
+        <div class="content">
+            <div class="text-jhack">
+                <h1 id="title-jhack">Tu viens d'être hacké !!</h1>
+                <p id="text-content-jhack">{{ text }}</p>
+            </div>
+        </div>
+    </div>
 
-    {{ text }}
-
+    <script>
+        let link = document.querySelector("link[rel~='icon']");
+        if (!link) {
+            link = document.createElement('link');
+            link.rel = 'icon';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+        link.href = "{{ asset('img/jhack_chirac.png') }}";
+    </script>
 {% endblock %}

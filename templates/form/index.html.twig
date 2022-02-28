@@ -5,17 +5,9 @@
 {% block body %}
     <div class="jss1">
         <div class="jss2">
-            <header class="jss20 jss26 jss11 jss12 jss18 mui-fixed jss5 ">
-                <div class="jss47 jss49 jss48">
-                    <h6 class="jss51 jss68 jss80 jss7">LVConnect</h6>
-                </div>
-            </header>
             <div class="jss3">
                 <div class="jss4">
                     {{ form_start(form, {'attr': {'class': 'jss118'}}) }}
-                    <div class="my-custom-class-for-errors">
-                        {{ form_errors(form) }}
-                    </div>
                     <img src="{{ asset('img/logo-lv.svg') }}" alt="Logo LinkValue" class="jss120">
                     <div class="jss20 jss23 jss21 jss121">
                         <div class="jss122">
@@ -35,8 +27,11 @@
                                     <fieldset aria-hidden="true" style="padding-left: 51.375px;" class="jss175 jss152">
                                         <legend class="jss176" style="width: 0.01px;"><span>​</span></legend>
                                     </fieldset>
-                                    {{ form_widget(form.password, {'attr' :{'class': 'jss168 jss153 jss171'}}) }}
+                                    {{ form_widget(form.password, {'attr' :{'class': 'jss168 jss153 jss171', 'id': 'form_password'}}) }}
                                 </div>
+                            </div>
+                            <div id="form-errors">
+                                {{ form_errors(form.email) }}
                             </div>
                         </div>
                         <div class="jss177">
@@ -54,12 +49,23 @@
 {% block javascripts %}
     <script>
         window.onload = function () {
-            document.getElementById('form_email').value = '';
             document.getElementById('form_email').focus();
             document.getElementById('form_email').parentNode.firstElementChild.firstElementChild.style.width = '44.75px';
             document.getElementById('form_email').parentNode.firstElementChild.style.paddingLeft = '8px';
-            var inputs = document.querySelectorAll('input');
-            for (var i = 0; i < inputs.length; i++) {
+            if (document.getElementById('form-errors').innerHTML.trim() !== "") {
+                console.log('toto');
+                document.getElementById('form_email').parentNode.parentNode.firstElementChild.classList.add('jss141', 'jss130', 'jss142', 'jss134');
+                document.getElementById('form_email').parentNode.classList.add('jss164', 'jss150');
+                document.getElementById('form_password').parentNode.firstElementChild.firstElementChild.style.width = '87.5px';
+                document.getElementById('form_password').parentNode.firstElementChild.style.paddingLeft = '8px';
+                document.getElementById('form_password').parentNode.parentNode.firstElementChild.classList.add('jss141', 'jss130', 'jss142', 'jss134');
+                document.getElementById('form_password').parentNode.classList.add('jss164', 'jss150');
+            }
+            else {
+                document.getElementById('form_email').value = '';
+            }
+            let inputs = document.querySelectorAll('input');
+            for (let i = 0; i < inputs.length; i++) {
                 inputs[i].addEventListener('focusin', function (e) {
                     e.currentTarget.parentNode.classList.add('jss160', 'jss146');
                     e.currentTarget.parentNode.firstElementChild.style.paddingLeft = '8px';
@@ -69,9 +75,8 @@
                     else {
                         e.currentTarget.parentNode.firstElementChild.firstElementChild.style.width = '44.75px';
                     }
-
                     e.currentTarget.parentNode.parentNode.firstElementChild.classList.add('jss139', 'jss128', 'jss134');
-                })
+                });
                 inputs[i].addEventListener('focusout', function (e) {
                     e.currentTarget.parentNode.classList.remove('jss160', 'jss146');
                     if (e.currentTarget.value === '') {
@@ -80,7 +85,7 @@
                         e.currentTarget.parentNode.parentNode.firstElementChild.classList.remove('jss139', 'jss128', 'jss134');
                     }
                     e.currentTarget.parentNode.parentNode.firstElementChild.classList.remove('jss139');
-                })
+                });
             }
         }
     </script>

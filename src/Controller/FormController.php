@@ -22,6 +22,12 @@ class FormController extends AbstractController
     ) {
     }
 
+    #[Route('/login')]
+    public function home(): Response
+    {
+        return $this->render('form/home.html.twig');
+    }
+
     #[Route('/auth/oauthLogin')]
     public function login(Request $request): Response
     {
